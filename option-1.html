@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>"NO MORE" MEME GENERATOR</title>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+	  color: white;
+	  background-color: rgb(90, 90, 90);
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 1%;
+	  margin-bottom: 3%;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+
+    .dots {
+      display: inline-block;
+      animation: blink 1s infinite;
+    }
+
+    .dots:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dots:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .description {
+      width: 80%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .description h2 {
+      font-size: 36px;
+      margin: 20px 0;
+    }
+
+    .instruction {
+      width: 80%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .instruction h2 {
+      font-size: 36px;
+      margin: 20px 0;
+    }
+
+    .instruction code {
+      font-size: 15px;
+      padding: 2px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+    }
+	
+	  .generator {
+    width: 80%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+	padding-right: 1%;
+	background-color: gray;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+      .generator h2 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  .generator-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .generator-input input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .generator-input button {
+    width: 25%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #132E6D;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .generator-input button:hover {
+    background-color: #323641;
+  }  
+  
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>NO MORE <span class="dots">.</span><span class="dots">.</span><span class="dots">.</span><br>MEME GENERATOR</h1>
+  </div>
+
+  <div class="description">
+    <h2>Description</h2>
+    <p>This tool generates memes in the "No More ..." format.</p>
+  </div>
+
+  <div class="instruction">
+    <h2>How to use?</h2>
+    <p>In a browser or messaging service, type the URL: <code><a href="#" onclick="copyToClipboard('https://nomore.pablito.tech/?image=')">https://nomore.pablito.tech/?image=Fortnite</a></code></p>
+	<p>Replace "Fortnite" with whatever word you want! If you are using a multi-word term, replace spaces with underscores.</p>
+    <p>Alternatively, you can use the generation tool below.</p>
+  </div>
+
+  <script>
+    function copyToClipboard(text) {
+      var input = document.createElement("textarea");
+      input.style.position = "fixed";
+      input.style.opacity = 0;
+      input.value = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+    }
+  </script>
+  
+  <div class="generator">
+	<h2>Generator</h2>
+	<p>Type in any term and click "Generate" to get your custom meme URL:</p>
+	<div class="generator-input">
+		<input type="text" id="generator-term" placeholder="Type a term here">
+		<button id="generator-button"><b>Generate</b></button>
+	</div>
+	</div>
+
+	<script>
+	// Get the input and button elements
+	const generatorInput = document.getElementById("generator-term");
+	const generatorButton = document.getElementById("generator-button");
+
+	// Add a click event listener to the button
+	generatorButton.addEventListener("click", function() {
+		// Get the term value and replace spaces with underscores
+		const term = generatorInput.value.replace(/\s/g, "_");
+
+		// Create the custom meme URL
+		const memeURL = `https://nomore.pablito.tech/?image=${term}`;
+
+		// Open the URL in a new tab
+		window.open(memeURL);
+
+		// Copy the URL to the clipboard
+		const dummy = document.createElement("textarea");
+		dummy.value = memeURL;
+		document.body.appendChild(dummy);
+		dummy.select();
+		document.execCommand("copy");
+		document.body.removeChild(dummy);
+	});
+	</script>	
+	
+  <div class="footer">
+	<p style="font-weight: bold;">Copyright &#169; <script>document.write(new Date().getFullYear())</script> <a style="color: white; text-decoration: none;" href="https://pablito.tech">Pablo Comino</a> & <a style="color: white; text-decoration: none;" href="https://www.dionperera.com">Dion Perera</a></p>
+  </div>
+</body>
+</html>
